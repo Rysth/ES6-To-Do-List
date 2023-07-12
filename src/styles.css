@@ -1,5 +1,7 @@
 :root {
   --CL-white-off: #dbdbdb;
+  --CL-gray-off: #b9b9b9;
+  --CL-yellow-off: #faf8a3;
 }
 
 *,
@@ -17,11 +19,6 @@ body {
   font-family: sans-serif;
 }
 
-input,
-button {
-  margin: 0 0.25em;
-}
-
 /* Text Align */
 
 .text-center {
@@ -37,6 +34,7 @@ button {
 }
 
 /* Shadow */
+
 .box-shadow-1 {
   box-shadow: 0 1px 7px rgb(0, 0, 0, 0.3);
 }
@@ -55,6 +53,33 @@ button {
   align-items: center;
 }
 
+/* Buttons */
+
+.btn {
+  display: grid;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--CL-gray-off);
+}
+
+.btn-dots {
+  margin: 0 0.35em;
+}
+
+.btn-reset {
+  animation: spin 0.5s linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Form */
 
 .form {
@@ -63,7 +88,7 @@ button {
 }
 
 .form * {
-  font-size: 1.05rem;
+  font-size: 0.9rem;
 }
 
 .form-item,
@@ -94,4 +119,14 @@ button {
 
 .todo-item {
   overflow: hidden;
+}
+
+.bg-yellow {
+  background-color: var(--CL-yellow-off);
+}
+
+@media (min-width: 768px) {
+  .form * {
+    font-size: 1.1rem;
+  }
 }

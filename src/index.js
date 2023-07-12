@@ -22,14 +22,14 @@ const traverseTasks = () => {
   const todoList = document.querySelector('#todo-list');
 
   const contentHTML = taskArray
-    .map((element, index) => {
+    .map((childNode, index) => {
       return `
         <li class="todo-item item-flex" id="todo-item-${index}">
           <div>
             <input class="form-check" type="checkbox" name="todo-input-${index}" id="todo-input-${index}" />
-            <input class="form-input" type="text" value="${element.description}" />
+            <input class="form-input todo-input" type="text" value="${childNode.description}" />
           </div>
-           <button type="reset">Reset</button>
+           <button class="btn btn-dots" type="button"><i class="fas fa-ellipsis-v"></i></button>
         </li>
     `;
     })
@@ -39,3 +39,39 @@ const traverseTasks = () => {
 };
 
 traverseTasks();
+
+/* Reset Animation */
+
+const resetButton = document.querySelector('#btn-reset');
+
+resetButton.addEventListener('click', () => {
+  resetButton.classList.add('btn-reset');
+
+  setTimeout(() => {
+    resetButton.classList.remove('btn-reset');
+  }, 500);
+});
+
+/* Hover Effect */
+var parents = document.querySelectorAll('.todo-item');
+var childs = document.querySelectorAll('.todo-input');
+
+const addHoverEffect = () => {
+  childs.forEach((childNode, childIndex) => {
+    parents.forEach((parentNode, parentIndex) => {
+      if (childIndex === parentIndex) {
+        childNode.addEventListener('mouseover', function () {
+          parentNode.classList.add('bg-yellow');
+          childNode.classList.add('bg-yellow');
+        });
+
+        childNode.addEventListener('mouseout', function () {
+          parentNode.classList.remove('bg-yellow');
+          childNode.classList.remove('bg-yellow');
+        });
+      }
+    });
+  });
+};
+
+addHoverEffect();
