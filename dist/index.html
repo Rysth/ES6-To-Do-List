@@ -3,7 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RysthCraft | Webpack Template</title>
+    <title>RysthCraft | ES6 | To-do List</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   <script defer src="bundle.js"></script></head>
-  <body></body>
+  <body>
+    <main>
+      <section class="section">
+        <header class="header container">
+          <h1 class="title-1 text-center">Todo List Application</h1>
+        </header>
+        <div class="container">
+          <form class="form box-shadow-1">
+            <div class="form-item item-flex">
+              <label class="form-label">Today's To Do</label>
+              <button class="btn btn-icon" type="reset" id="btn-reset">
+                <i class="fa fa-refresh" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="form-item item-flex">
+              <input
+                class="form-input fs-italic"
+                type="text"
+                name="form-task"
+                id="form-task"
+                placeholder="Add to your list..."
+                aria-label="New task input"
+                required
+              />
+              <button class="btn btn-icon" type="submit">
+                <i class="fas fa-sign-in"></i>
+              </button>
+            </div>
+            <ul class="todo-list" id="todo-list"></ul>
+          </form>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="./index.js"></script>
+  </body>
 </html>
