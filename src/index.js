@@ -31,7 +31,7 @@ const traverseTasks = () => {
           </div>
            <button class="btn btn-icon btn-dots" type="button"><i class="fas fa-ellipsis-v"></i></button>
         </li>
-    `
+    `,
     )
     .join('');
 
