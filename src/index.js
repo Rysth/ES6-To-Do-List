@@ -22,15 +22,17 @@ const addHoverEffect = () => {
   todoItems.forEach((item) => {
     const input = item.querySelector('.todo-input');
 
-    item.addEventListener('mouseover', () => {
-      item.classList.add('bg-yellow');
-      input.classList.add('bg-yellow');
-    });
+    if (item && input) {
+      input.addEventListener('mouseover', () => {
+        item.classList.add('bg-yellow');
+        input.classList.add('bg-yellow');
+      });
 
-    item.addEventListener('mouseout', () => {
-      item.classList.remove('bg-yellow');
-      input.classList.remove('bg-yellow');
-    });
+      input.addEventListener('mouseout', () => {
+        item.classList.remove('bg-yellow');
+        input.classList.remove('bg-yellow');
+      });
+    }
   });
 };
 
@@ -60,8 +62,10 @@ const addEditFunction = () => {
 
 form.addEventListener('submit', (event) => {
   const description = document.querySelector('#form-task').value;
-  addTask(taskArray.length, description, taskArray);
-  resetContent();
+  if (description !== '') {
+    addTask(taskArray.length, description, taskArray);
+    resetContent();
+  }
   event.preventDefault();
 });
 
@@ -87,9 +91,10 @@ const traverseTasks = () => {
         <li class="todo-item bg-white-off" >
            <button id="btn-clear" class="btn btn-clear color-gray w-100 text-center" type="button" >Clear all completed</button>
         </li>
-  `;
+    `;
 
     todoList.innerHTML = contentHTML + clearButton;
+
     addHoverEffect();
     addRemoveFunction();
     addEditFunction();
