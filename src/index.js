@@ -29,13 +29,19 @@ const traverseTasks = () => {
             <input class="form-check" type="checkbox" name="todo-input-${index}" id="todo-input-${index}" />
             <input class="form-input todo-input" type="text" value="${childNode.description}" />
           </div>
-           <button class="btn btn-dots" type="button"><i class="fas fa-ellipsis-v"></i></button>
+           <button class="btn btn-icon btn-dots" type="button"><i class="fas fa-ellipsis-v"></i></button>
         </li>
     `;
     })
     .join('');
 
-  todoList.innerHTML = contentHTML;
+  const clearButton = `
+        <li class="todo-item bg-white-off" >
+           <button id="btn-clear" class="btn btn-clear color-gray w-100 text-center" type="button">Clear all completed</button>
+        </li>
+  `;
+
+  todoList.innerHTML = contentHTML + clearButton;
 };
 
 traverseTasks();

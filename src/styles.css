@@ -1,6 +1,8 @@
 :root {
-  --CL-white-off: #dbdbdb;
-  --CL-gray-off: #b9b9b9;
+  --CL-black: #000000;
+  --CL-gray: #5f5f5f;
+  --CL-white-off: #ececec;
+  --CL-gray-off: #c4c4c4;
   --CL-yellow-off: #faf8a3;
 }
 
@@ -53,14 +55,27 @@ body {
   align-items: center;
 }
 
+/* Widths */
+
+.w-100 {
+  width: 100%;
+}
+
 /* Buttons */
 
 .btn {
-  display: grid;
   border: none;
   background-color: transparent;
   cursor: pointer;
   color: var(--CL-gray-off);
+}
+
+.btn-icon {
+  display: grid;
+}
+
+.btn:hover > i {
+  color: var(--CL-black);
 }
 
 .btn-dots {
@@ -69,6 +84,11 @@ body {
 
 .btn-reset {
   animation: spin 0.5s linear;
+}
+
+.btn-clear:hover {
+  color: var(--CL-black);
+  text-decoration: underline;
 }
 
 @keyframes spin {
@@ -121,8 +141,22 @@ body {
   overflow: hidden;
 }
 
+/* Backgrounds & Colors*/
+
 .bg-yellow {
   background-color: var(--CL-yellow-off);
+}
+
+.bg-gray-off {
+  background-color: var(--CL-gray-off);
+}
+
+.bg-white-off {
+  background-color: var(--CL-white-off);
+}
+
+.color-gray {
+  color: var(--CL-gray);
 }
 
 @media (min-width: 768px) {
