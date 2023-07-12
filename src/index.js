@@ -31,7 +31,7 @@ const traverseTasks = () => {
           </div>
            <button class="btn btn-icon btn-dots" type="button"><i class="fas fa-ellipsis-v"></i></button>
         </li>
-    `,
+    `
     )
     .join('');
 
@@ -44,7 +44,9 @@ const traverseTasks = () => {
   todoList.innerHTML = contentHTML + clearButton;
 };
 
-traverseTasks();
+window.onload = () => {
+  traverseTasks();
+};
 
 /* Reset Animation */
 
