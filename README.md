@@ -7,7 +7,6 @@
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
     - [Future Features](#future-features)
-  - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Test](#test)
@@ -52,14 +51,6 @@
 
 - **Implement a CSS Preprocessor.**
 - **Implement a Database**
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## 🚀 Live Demo <a name="live-demo"></a>
-
-### Take a Look
-
-- [Live Demo Link](https://rysth.github.io/ES6-To-Do-List/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
