@@ -19,9 +19,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 ES6 Awesome Books App <a name="about-project"></a>
+# 📖 ES6 ToDo List <a name="about-project"></a>
 
-**ES6 Awesome Books App** description....
+**ES6 ToDo List** is a modern and efficient task management application that leverages the power of ES6 and contemporary web technologies. With its intuitive interface, prioritization options, task categorization, and collaboration features, it offers a seamless experience for organizing and accomplishing daily tasks.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -33,6 +33,7 @@
     <li><a href="https://www.w3schools.com/html/">HTML</a></li>
     <li><a href="https://www.w3schools.com/css/">CSS</a></li>
     <li><a href="https://www.w3schools.com/js/">JavaScript ES6</a></li>
+    <li><a href="https://webpack.js.org/">Webpack</a></li>
   </ul>
 </details>
 
@@ -58,7 +59,7 @@
 
 ### Take a Look
 
-- [Live Demo Link](https://rysth.github.io/ES6-Awesome-Books/)
+- [Live Demo Link](https://rysth.github.io/ES6-To-Do-List/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -70,8 +71,8 @@ To get a local copy up and running, follow these steps.
 
 To get a local copy up and running, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/RysthCraft/ES6-Awesome-Books.git`
-2. Navigate to the project directory: `cd ES6-Awesome-Books`
+1. Clone the repository: `git clone https://github.com/RysthCraft/ES6-To-Do-List.git`
+2. Navigate to the project directory: `cd ES6-To-Do-List`
 3. Install the dependencies: `npm install`
 4. Build the project: `npm run build`
 5. Open `index.html` in your web browser.

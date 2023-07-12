@@ -22,8 +22,8 @@ const traverseTasks = () => {
   const todoList = document.querySelector('#todo-list');
 
   const contentHTML = taskArray
-    .map((childNode, index) => {
-      return `
+    .map(
+      (childNode, index) => `
         <li class="todo-item item-flex" id="todo-item-${index}">
           <div>
             <input class="form-check" type="checkbox" name="todo-input-${index}" id="todo-input-${index}" />
@@ -31,8 +31,8 @@ const traverseTasks = () => {
           </div>
            <button class="btn btn-icon btn-dots" type="button"><i class="fas fa-ellipsis-v"></i></button>
         </li>
-    `;
-    })
+    `,
+    )
     .join('');
 
   const clearButton = `
@@ -59,19 +59,19 @@ resetButton.addEventListener('click', () => {
 });
 
 /* Hover Effect */
-var parents = document.querySelectorAll('.todo-item');
-var childs = document.querySelectorAll('.todo-input');
+const parents = document.querySelectorAll('.todo-item');
+const childs = document.querySelectorAll('.todo-input');
 
 const addHoverEffect = () => {
   childs.forEach((childNode, childIndex) => {
     parents.forEach((parentNode, parentIndex) => {
       if (childIndex === parentIndex) {
-        childNode.addEventListener('mouseover', function () {
+        childNode.addEventListener('mouseover', () => {
           parentNode.classList.add('bg-yellow');
           childNode.classList.add('bg-yellow');
         });
 
-        childNode.addEventListener('mouseout', function () {
+        childNode.addEventListener('mouseout', () => {
           parentNode.classList.remove('bg-yellow');
           childNode.classList.remove('bg-yellow');
         });
