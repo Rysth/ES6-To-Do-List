@@ -1,7 +1,7 @@
-import { addTask, editTask, removeTask } from './functionality.js';
+import { addTask, editTask, removeTask } from './modules/functionality.js';
 import './styles.css';
 
-let taskArray = JSON.parse(localStorage.getItem('taskArray')) || [];
+const taskArray = JSON.parse(localStorage.getItem('taskArray')) || [];
 
 /* Add & Remove */
 const form = document.querySelector('#form');
@@ -10,11 +10,15 @@ const updateLocalStorage = () => {
   localStorage.setItem('taskArray', JSON.stringify(taskArray));
 };
 
+/* eslint-disable */
+
 const resetContent = () => {
   updateLocalStorage();
   traverseTasks();
   form.reset();
 };
+
+/* eslint-enable */
 
 const addHoverEffect = () => {
   const todoItems = document.querySelectorAll('.todo-item');
@@ -83,7 +87,7 @@ const traverseTasks = () => {
           </div>
            <button class="btn btn-icon btn-dots" type="button" ><i class="fas fa-ellipsis-v"></i></button>
         </li>
-    `
+    `,
       )
       .join('');
 

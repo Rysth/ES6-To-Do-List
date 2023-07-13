@@ -40,9 +40,10 @@
 
 ### Key Features <a name="key-features"></a>
 
-- Add new books with their title and author.
-- Display a list of saved books.
-- Remove books from the list.
+- Add new task with index, description and completed state.
+- Display a list of saved tasks.
+- Remove tasks from the list.
+- Edit tasks from the list.
 - Store book data using `localStorage`.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
