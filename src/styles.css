@@ -160,6 +160,16 @@ body {
   color: var(--CL-gray);
 }
 
+/* Text Decoration */
+
+.line-trough {
+  text-decoration: line-through;
+}
+
+.fa-trash {
+  color: rgb(255, 130, 130);
+}
+
 @media (min-width: 768px) {
   .form * {
     font-size: 1.1rem;
