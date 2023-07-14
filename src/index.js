@@ -6,7 +6,7 @@ import {
 } from './modules/interactive.js';
 import './styles.css';
 
-const taskArray = JSON.parse(localStorage.getItem('taskArray')) || [];
+let taskArray = JSON.parse(localStorage.getItem('taskArray')) || [];
 
 /* Add & Remove */
 const form = document.querySelector('#form');
@@ -146,6 +146,8 @@ const resetButton = document.querySelector('#btn-reset');
 
 resetButton.addEventListener('click', () => {
   resetButton.classList.add('btn-reset');
+  taskArray = [];
+  resetContent();
 
   setTimeout(() => {
     resetButton.classList.remove('btn-reset');
