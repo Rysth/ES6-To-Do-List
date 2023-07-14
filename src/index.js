@@ -1,4 +1,9 @@
 import { addTask, editTask, removeTask } from './modules/functionality.js';
+import {
+  markTaskComplete,
+  markTaskIncomplete,
+  removeAllCompleted,
+} from './modules/interactive.js';
 import './styles.css';
 
 const taskArray = JSON.parse(localStorage.getItem('taskArray')) || [];
@@ -41,10 +46,10 @@ const addHoverEffect = () => {
 };
 
 const addRemoveFunction = () => {
-  const dots = document.querySelectorAll('.btn-dots');
+  const trashs = document.querySelectorAll('.btn-trash');
 
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
+  trashs.forEach((trash, index) => {
+    trash.addEventListener('click', () => {
       removeTask(index, taskArray);
       resetContent();
     });
@@ -64,10 +69,25 @@ const addEditFunction = () => {
   });
 };
 
+const addMarkFunction = () => {
+  const todoChecks = document.querySelectorAll('.todo-check');
+
+  todoChecks.forEach((check, index) => {
+    check.addEventListener('change', (event) => {
+      if (event.target.checked) {
+        markTaskComplete(index, taskArray);
+      } else {
+        markTaskIncomplete(index, taskArray);
+      }
+      resetContent();
+    });
+  });
+};
+
 form.addEventListener('submit', (event) => {
   const description = document.querySelector('#form-task').value;
   if (description !== '') {
-    addTask(taskArray.length, description, taskArray);
+    addTask(taskArray.length, description.trim(), taskArray);
     resetContent();
   }
   event.preventDefault();
@@ -78,17 +98,22 @@ const traverseTasks = () => {
 
   if (taskArray) {
     const contentHTML = taskArray
-      .map(
-        (task, index) => `
+      .map((task, index) => {
+        const checked = task.complete ? 'checked' : '';
+        const className = checked ? 'line-trough' : '';
+        const mustDelete = checked ? 'btn-trash' : '';
+        const icon = checked ? 'fa-trash' : 'fa-ellipsis-v';
+
+        return `
         <li class="todo-item item-flex" id="todo-item-${index}">
           <div>
-            <input class="form-check" type="checkbox" name="todo-input-${index}" id="todo-input-${index}" />
-            <input class="form-input todo-input" type="text" value="${task.description}" />
+            <input class="form-check todo-check" type="checkbox" name="todo-input-${index}" id="todo-input-${index}" ${checked}/>
+            <input class="form-input todo-input ${className}" type="text" value="${task.description}" />
           </div>
-           <button class="btn btn-icon btn-dots" type="button" ><i class="fas fa-ellipsis-v"></i></button>
+           <button class="btn btn-icon ${mustDelete}" type="button" ><i class="fas ${icon}"></i></button>
         </li>
-    `,
-      )
+    `;
+      })
       .join('');
 
     const clearButton = `
@@ -99,9 +124,17 @@ const traverseTasks = () => {
 
     todoList.innerHTML = contentHTML + clearButton;
 
+    const buttonClear = document.querySelector('#btn-clear');
+
+    buttonClear.addEventListener('click', () => {
+      removeAllCompleted(taskArray);
+      resetContent();
+    });
+
     addHoverEffect();
     addRemoveFunction();
     addEditFunction();
+    addMarkFunction();
   }
 };
 
