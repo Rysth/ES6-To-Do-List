@@ -1,14 +1,11 @@
-const markTaskComplete = (ID, collection) => {
+const toggleTaskComplete = (ID, collection) => {
   const task = collection.find((element) => element.index === ID);
   if (task) {
+    if (task.complete) {
+      task.complete = false;
+      return;
+    }
     task.complete = true;
-  }
-};
-
-const markTaskIncomplete = (ID, collection) => {
-  const task = collection.find((element) => element.index === ID);
-  if (task) {
-    task.complete = false;
   }
 };
 
@@ -28,4 +25,4 @@ const removeAllCompleted = (collection) => {
     });
   }
 };
-export { markTaskComplete, markTaskIncomplete, removeAllCompleted };
+export { toggleTaskComplete, removeAllCompleted };

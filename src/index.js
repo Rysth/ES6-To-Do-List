@@ -1,12 +1,8 @@
 import { addTask, editTask, removeTask } from './modules/functionality.js';
-import {
-  markTaskComplete,
-  markTaskIncomplete,
-  removeAllCompleted,
-} from './modules/interactive.js';
+import { toggleTaskComplete, removeAllCompleted } from './modules/interactive.js';
 import './styles.css';
 
-let taskArray = JSON.parse(localStorage.getItem('taskArray')) || [];
+const taskArray = JSON.parse(localStorage.getItem('taskArray')) || [];
 
 /* Add & Remove */
 const form = document.querySelector('#form');
@@ -46,10 +42,10 @@ const addHoverEffect = () => {
 };
 
 const addRemoveFunction = () => {
-  const trashs = document.querySelectorAll('.btn-trash');
+  const dots = document.querySelectorAll('.btn-dots');
 
-  trashs.forEach((trash, index) => {
-    trash.addEventListener('click', () => {
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
       removeTask(index, taskArray);
       resetContent();
     });
@@ -73,12 +69,8 @@ const addMarkFunction = () => {
   const todoChecks = document.querySelectorAll('.todo-check');
 
   todoChecks.forEach((check, index) => {
-    check.addEventListener('change', (event) => {
-      if (event.target.checked) {
-        markTaskComplete(index, taskArray);
-      } else {
-        markTaskIncomplete(index, taskArray);
-      }
+    check.addEventListener('change', () => {
+      toggleTaskComplete(index, taskArray);
       resetContent();
     });
   });
@@ -110,7 +102,7 @@ const traverseTasks = () => {
             <input class="form-check todo-check" type="checkbox" name="todo-input-${index}" id="todo-input-${index}" ${checked}/>
             <input class="form-input todo-input ${className}" type="text" value="${task.description}" />
           </div>
-           <button class="btn btn-icon ${mustDelete}" type="button" ><i class="fas ${icon}"></i></button>
+           <button class="btn btn-icon btn-dots ${mustDelete}" type="button" ><i class="fas ${icon}"></i></button>
         </li>
     `;
       })
@@ -146,7 +138,7 @@ const resetButton = document.querySelector('#btn-reset');
 
 resetButton.addEventListener('click', () => {
   resetButton.classList.add('btn-reset');
-  taskArray = [];
+  taskArray.splice(0, taskArray.length);
   resetContent();
 
   setTimeout(() => {
