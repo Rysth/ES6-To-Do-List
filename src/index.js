@@ -79,7 +79,7 @@ const addMarkFunction = () => {
 form.addEventListener('submit', (event) => {
   const description = document.querySelector('#form-task').value;
   if (description !== '') {
-    addTask(taskArray.length, description.trim(), taskArray);
+    addTask(taskArray.length + 1, description.trim(), taskArray);
     resetContent();
   }
   event.preventDefault();

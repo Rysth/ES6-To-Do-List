@@ -18,7 +18,7 @@ const removeTask = (ID, collection) => {
     if (collection.length !== 0) {
       // Update the index of each task after removal
       collection.forEach((task, index) => {
-        task.index = index;
+        task.index = index + 1;
       });
     }
   }
