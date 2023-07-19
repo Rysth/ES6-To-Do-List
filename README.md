@@ -20,7 +20,7 @@
 
 # 📖 ES6 ToDo List <a name="about-project"></a>
 
-**ES6 ToDo List** is a modern task management app that streamlines daily task organization and completion through an intuitive interface. Built with HTML, CSS, and JavaScript.
+A ***To-do List* that uses localStorage to allow users to add, remove, and edit their tasks by presenting them in a modern interface. Built with HTML, CSS, and JavaScript.
 
 ## 🛠 Built With <a name="built-with"></a>
 
