@@ -26,7 +26,7 @@ const removeTask = (ID, collection) => {
 
 const editTask = (ID, newDescription, collection) => {
   // Find the task with the specified ID in the collection
-  const task = collection.find((element) => element.index === ID);
+  const task = collection[ID];
 
   if (task) {
     // Update the description of the task with the newDescription value
