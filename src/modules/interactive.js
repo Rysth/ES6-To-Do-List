@@ -13,7 +13,7 @@ const toggleTaskComplete = (ID, collection) => {
 const removeAllCompleted = (collection) => {
   const tasks = collection.filter((element) => element.complete === true);
 
-  //Tasks [0, 1]
+  // Tasks [0, 1]
 
   if (tasks) {
     tasks.forEach((task) => {
