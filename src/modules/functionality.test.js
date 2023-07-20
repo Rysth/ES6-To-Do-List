@@ -24,3 +24,5 @@ describe('Remove Functionality', () => {
     ]);
   });
 });
+
+/* Bruno: editTask() */

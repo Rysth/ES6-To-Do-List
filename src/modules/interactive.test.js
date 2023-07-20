@@ -1,0 +1,3 @@
+/* John: toggleTaskComplete() */
+
+/* John: removeAllCompleted() */
