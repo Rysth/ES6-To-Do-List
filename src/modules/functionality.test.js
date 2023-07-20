@@ -1,4 +1,4 @@
-const { addTask, removeTask } = require('./functionality');
+const { addTask, removeTask, editTask } = require('./functionality');
 
 /* John: addTask() */
 describe('Add Functionality', () => {
