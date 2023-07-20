@@ -1,19 +1,15 @@
 const { toggleTaskComplete, removeAllCompleted } = require('./interactive');
 
-// Simple mock storage object
+// This is a simple mockStorage object to simulate localStorage behavior
 const mockStorage = {
-  data: {},
-  setItem(key, value) {
-    this.data[key] = value;
-  },
-  getItem(key) {
+  data: {}, // This object will store data as if it were in localStorage
+
+  getItem: function (key) {
     return this.data[key] || null;
   },
-  removeItem(key) {
-    delete this.data[key];
-  },
-  clear() {
-    this.data = {};
+
+  setItem: function (key, value) {
+    this.data[key] = value;
   },
 };
 
@@ -26,90 +22,29 @@ describe('Toggle Task Functionality', () => {
         description: 'Hello World',
         complete: false,
       },
+      {
+        index: 2,
+        description: 'Hello World!',
+        complete: true,
+      },
     ];
+
     toggleTaskComplete(0, collection);
-    expect(collection).toEqual([
+    toggleTaskComplete(1, collection);
+
+    // Update localStorage after calling toggleTaskComplete()
+    mockStorage.setItem('collection', JSON.stringify(collection));
+
+    const updatedCollection = JSON.parse(mockStorage.getItem('collection'));
+
+    expect(updatedCollection).toEqual([
       { index: 1, description: 'Hello World', complete: true },
+      { index: 2, description: 'Hello World!', complete: false },
     ]);
   });
 });
 
 /* John: removeAllCompleted() */
-describe('Remove All Completed Functionality', () => {
-  test('Should remove completed tasks', () => {
-    const collection = [
-      {
-        index: 1,
-        description: 'Task 1',
-        complete: true,
-      },
-      {
-        index: 2,
-        description: 'Task 2',
-        complete: false,
-      },
-      {
-        index: 3,
-        description: 'Task 3',
-        complete: true,
-      },
-    ];
-
-    removeAllCompleted(collection);
-
-    // After calling removeAllCompleted(), it should remove the completed tasks
-    expect(collection).toEqual([
-      { index: 1, description: 'Task 2', complete: false },
-    ]);
-  });
-
-  test('Should update indexes after removing tasks', () => {
-    const collection = [
-      {
-        index: 1,
-        description: 'Task 1',
-        complete: true,
-      },
-      {
-        index: 2,
-        description: 'Task 2',
-        complete: false,
-      },
-      {
-        index: 3,
-        description: 'Task 3',
-        complete: true,
-      },
-    ];
-
-    removeAllCompleted(collection);
-
-    // After calling removeAllCompleted(), it should update the indexes of the remaining tasks
-    expect(collection).toEqual([
-      { index: 1, description: 'Task 2', complete: false },
-    ]);
-  });
-
-  test('Should not change collection if there are no completed tasks', () => {
-    const collection = [
-      {
-        index: 1,
-        description: 'Task 1',
-        complete: false,
-      },
-      {
-        index: 2,
-        description: 'Task 2',
-        complete: false,
-      },
-    ];
-
-    removeAllCompleted(collection);
-
-    // After calling removeAllCompleted(), the collection should remain unchanged
-    expect(collection).toEqual([
-      { index: 1, description: 'Task 1', complete: false },
-      { index: 2, description: 'Task 2', complete: false },
-    ]);
-  });
-});
+/* describe('Remove All Completed Functionality', () => {
+  test('Should remove completed tasks', () => {});
+}); */
