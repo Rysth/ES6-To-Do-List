@@ -1,5 +1,22 @@
 const { toggleTaskComplete, removeAllCompleted } = require('./interactive');
 
+// Simple mock storage object
+const mockStorage = {
+  data: {},
+  setItem(key, value) {
+    this.data[key] = value;
+  },
+  getItem(key) {
+    return this.data[key] || null;
+  },
+  removeItem(key) {
+    delete this.data[key];
+  },
+  clear() {
+    this.data = {};
+  },
+};
+
 /* John: toggleTaskComplete() */
 describe('Toggle Task Functionality', () => {
   test('Should change the status to Checked', () => {
