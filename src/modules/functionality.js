@@ -34,4 +34,8 @@ const editTask = (ID, newDescription, collection) => {
   }
 };
 
-export { addTask, removeTask, editTask };
+module.exports = {
+  addTask,
+  removeTask,
+  editTask,
+};
