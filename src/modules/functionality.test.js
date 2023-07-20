@@ -1,4 +1,5 @@
 const { addTask, removeTask, editTask } = require('./functionality');
+const { mockStorage } = require('./mockStorage');
 
 /* John: addTask() */
 describe('Add Functionality', () => {
