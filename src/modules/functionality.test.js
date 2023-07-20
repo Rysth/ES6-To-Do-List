@@ -1,5 +1,10 @@
+/**
+ * @jest-environment jsdom
+ */
+
 const { addTask, removeTask, editTask } = require('./functionality');
 const { mockStorage } = require('./mockStorage');
+const { traverseTasks } = require('./DOM');
 
 /* John: addTask() */
 describe('Add Functionality', () => {
@@ -32,6 +37,16 @@ describe('Edit Functionality', () => {
     const updatedCollection = JSON.parse(mockStorage.getItem('collection'));
 
     editTask(2, 'Task 3.3', updatedCollection);
+
+    // DOM Manipulation: Check if the LI's items from the UL aren't NaN
+    // After we edit a description from a Task.
+    document.body.innerHTML = `
+    <ul class="todo-list" id="todo-list">
+      ${traverseTasks(updatedCollection)}
+    </ul>`;
+    const todoList = document.querySelectorAll('#todo-list li');
+    expect(todoList).not.toBeNaN();
+
     expect(updatedCollection).toEqual([
       {
         index: 1,
@@ -52,7 +67,7 @@ describe('Edit Functionality', () => {
         index: 4,
         description: 'Task 4',
         complete: true,
-      }
+      },
     ]);
   });
 });

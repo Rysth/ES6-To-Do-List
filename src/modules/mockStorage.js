@@ -1,11 +1,11 @@
 const mockStorage = {
   data: {}, // This object will store data as if it were in localStorage
 
-  getItem: function (key) {
+  getItem(key) {
     return this.data[key] || null;
   },
 
-  setItem: function (key, value) {
+  setItem(key, value) {
     this.data[key] = value;
   },
 };
