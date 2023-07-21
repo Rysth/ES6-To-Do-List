@@ -28,4 +28,4 @@ const removeAllCompleted = (collection) => {
     });
   }
 };
-export { toggleTaskComplete, removeAllCompleted };
+module.exports = { toggleTaskComplete, removeAllCompleted };
